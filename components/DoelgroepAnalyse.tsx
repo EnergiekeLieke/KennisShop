@@ -108,7 +108,10 @@ export default function DoelgroepAnalyse() {
         <div className="space-y-5">
           {DOELGROEP_VRAGEN.map((v) => (
             <div key={v.key}>
-              <label className="block text-sm text-darkSlate mb-1.5">{v.label}</label>
+              <label className="block text-sm text-darkSlate mb-1.5">
+                <span className="font-bold">{v.label.match(/^Vraag \d+\./)?.[0]}</span>
+                {v.label.replace(/^Vraag \d+\./, '')}
+              </label>
               <textarea
                 value={antwoorden[v.key]}
                 onChange={(e) => updateAntwoord(v.key, e.target.value)}
